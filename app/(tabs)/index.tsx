@@ -1,98 +1,284 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+  FlatList,
+  TextInput,
+  Pressable,
+  useColorScheme,
+  useWindowDimensions,
+} from "react-native";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+const themes = {
+  light: {
+    background: "#FFFFFF",
+    card: "#F5F5F5",
+    text: "#1A1A1A",
+    subtext: "#666666",
+    accent: "#6C63FF",
+    input: "#EFEFEF",
+  },
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  dark: {
+    background: "#121212",
+    card: "#1E1E1E",
+    text: "#FFFFFF",
+    subtext: "#AAAAAA",
+    accent: "#9D97FF",
+    input: "#2A2A2A",
+  },
+};
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+const notes = [
+  {
+    id: "1",
+    title: "Meeting Notes",
+    content: "Discuss project UI and React Native assignment...",
+    date: "11 May 2026",
+  },
+
+  {
+    id: "2",
+    title: "Shopping List",
+    content: "Milk, Bread, Coffee, Eggs...",
+    date: "10 May 2026",
+  },
+
+  {
+    id: "3",
+    title: "Ideas",
+    content: "Build a responsive Notes App using Expo...",
+    date: "9 May 2026",
+  },
+
+  {
+    id: "4",
+    title: "Assignments",
+    content: "Complete React Native UI assignment...",
+    date: "8 May 2026",
+  },
+];
+
+const HomeScreen = () => {
+  // System Theme
+  const systemScheme = useColorScheme();
+
+  // Manual Theme Override
+  const [manualDark, setManualDark] = useState<boolean | null>(null);
+
+  // Search State
+  const [search, setSearch] = useState("");
+
+  // Final Theme Logic
+  const isDark =
+    manualDark !== null ? manualDark : systemScheme === "dark";
+
+  // Theme Object
+  const theme = isDark ? themes.dark : themes.light;
+
+  // Responsive Layout
+  const { width } = useWindowDimensions();
+
+  const isTablet = width > 768;
+
+  // Filter Notes
+  const filteredNotes = notes.filter((note) =>
+    note.title.toLowerCase().includes(search.toLowerCase())
   );
-}
+
+  return (
+    <SafeAreaView
+      style={[
+        styles.container,
+        {
+          backgroundColor: theme.background,
+        },
+      ]}
+    >
+      {/* Status Bar */}
+      <StatusBar style={isDark ? "light" : "dark"} />
+
+      {/* Header */}
+      <View style={styles.header}>
+        <View>
+          <Text
+            style={[
+              styles.heading,
+              {
+                color: theme.text,
+                fontSize: isTablet ? 38 : 30,
+              },
+            ]}
+          >
+            My Notes
+          </Text>
+
+          <Text
+            style={[
+              styles.subtitle,
+              {
+                color: theme.subtext,
+              },
+            ]}
+          >
+            Organize your thoughts easily
+          </Text>
+        </View>
+
+        {/* Theme Switch */}
+        <Switch
+          value={isDark}
+          onValueChange={setManualDark}
+          trackColor={{
+            false: "#ccc",
+            true: theme.accent,
+          }}
+          thumbColor="white"
+        />
+      </View>
+
+      {/* Search Input */}
+      <TextInput
+        placeholder="Search notes..."
+        placeholderTextColor={theme.subtext}
+        value={search}
+        onChangeText={setSearch}
+        style={[
+          StyleSheet.compose(styles.searchInput, {
+            fontSize: isTablet ? 22 : 16,
+          }),
+
+          {
+            backgroundColor: theme.input,
+            color: theme.text,
+          },
+        ]}
+      />
+
+      {/* Notes List */}
+      <FlatList
+        data={filteredNotes}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: 20,
+        }}
+        renderItem={({ item }) => (
+          <Pressable
+            style={[
+              StyleSheet.compose(styles.card, {
+                padding: isTablet ? 28 : 18,
+              }),
+
+              {
+                backgroundColor: theme.card,
+              },
+            ]}
+          >
+            <Text
+              style={[
+                styles.noteTitle,
+                {
+                  color: theme.text,
+                  fontSize: isTablet ? 26 : 20,
+                },
+              ]}
+            >
+              {item.title}
+            </Text>
+
+            <Text
+              style={[
+                styles.noteContent,
+                {
+                  color: theme.subtext,
+                  fontSize: isTablet ? 18 : 15,
+                },
+              ]}
+            >
+              {item.content}
+            </Text>
+
+            <Text
+              style={[
+                styles.noteDate,
+                {
+                  color: theme.subtext,
+                  fontSize: isTablet ? 15 : 12,
+                },
+              ]}
+            >
+              {item.date}
+            </Text>
+          </Pressable>
+        )}
+      />
+    </SafeAreaView>
+  );
+};
+
+export default HomeScreen;
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 25,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  heading: {
+    fontWeight: "bold",
+  },
+
+  subtitle: {
+    fontSize: 14,
+    marginTop: 4,
+  },
+
+  searchInput: {
+    padding: 15,
+    borderRadius: 16,
+    marginBottom: 22,
+  },
+
+  card: {
+    borderRadius: 20,
+    marginBottom: 18,
+
+    // Android Shadow
+    elevation: 4,
+
+    // iOS Shadow
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+  },
+
+  noteTitle: {
+    fontWeight: "700",
+    marginBottom: 10,
+  },
+
+  noteContent: {
+    lineHeight: 24,
+  },
+
+  noteDate: {
+    marginTop: 14,
   },
 });
