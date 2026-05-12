@@ -132,14 +132,14 @@ npx expo start
 # 📹 Demo Video
 
 Demo video link:
-([Add your video link here](https://drive.google.com/file/d/1W8_qNTiOISJg9eHipmmDYw9FjLXPQWk8/view?usp=sharing))
+(https://drive.google.com/file/d/1W8_qNTiOISJg9eHipmmDYw9FjLXPQWk8/view?usp=sharing)
 
 # 📸 Screenshots
 
-(<img width="717" height="1600" alt="image" src="https://github.com/user-attachments/assets/b92428c9-b8d2-4a41-ad18-7e4f983ce12f" />
+(<img width="417" height="1000" alt="image" src="https://github.com/user-attachments/assets/b92428c9-b8d2-4a41-ad18-7e4f983ce12f" />
 
-<img width="717" height="1600" alt="image" src="https://github.com/user-attachments/assets/93bab07d-bea5-4937-b944-8598ff5ba902" />
-<img width="717" height="1600" alt="image" src="https://github.com/user-attachments/assets/7267a9c3-48e4-45f9-a293-2d9a79c294eb" />)
+<img width="417" height="1000" alt="image" src="https://github.com/user-attachments/assets/93bab07d-bea5-4937-b944-8598ff5ba902" />
+<img width="417" height="1000" alt="image" src="https://github.com/user-attachments/assets/7267a9c3-48e4-45f9-a293-2d9a79c294eb" />)
 
 
 
