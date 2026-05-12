@@ -136,10 +136,10 @@ Demo video link:
 
 # 📸 Screenshots
 
-(<img width="417" height="1000" alt="image" src="https://github.com/user-attachments/assets/b92428c9-b8d2-4a41-ad18-7e4f983ce12f" />
+(<img width="217" height="800" alt="image" src="https://github.com/user-attachments/assets/b92428c9-b8d2-4a41-ad18-7e4f983ce12f" />
 
-<img width="417" height="1000" alt="image" src="https://github.com/user-attachments/assets/93bab07d-bea5-4937-b944-8598ff5ba902" />
-<img width="417" height="1000" alt="image" src="https://github.com/user-attachments/assets/7267a9c3-48e4-45f9-a293-2d9a79c294eb" />)
+(<img width="217" height="800" alt="image" src="https://github.com/user-attachments/assets/93bab07d-bea5-4937-b944-8598ff5ba902" />)
+(<img width="217" height="800" alt="image" src="https://github.com/user-attachments/assets/7267a9c3-48e4-45f9-a293-2d9a79c294eb" />)
 
 
 
