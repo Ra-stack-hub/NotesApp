@@ -1,50 +1,159 @@
-# Welcome to your Expo app 👋
+# 📝 Notes UI App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern and responsive Notes App UI built using **React Native** and **Expo**.
 
-## Get started
+This project focuses on:
 
-1. Install dependencies
+* responsive mobile UI design
+* dark/light theme handling
+* clean layouts
+* React Native core components
+* structured styling practices
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+# 📱 Features
 
-   ```bash
-   npx expo start
-   ```
+## Notes Listing Screen
 
-In the output, you'll find options to open the app in a
+* Display notes using `FlatList`
+* Search notes using `TextInput`
+* Interactive note cards using `Pressable`
+* Dark/Light mode toggle using `Switch`
+* Floating Add Button
+* Empty notes state message
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Note Editor Screen
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+* Title input field
+* Multiline note content input
+* `KeyboardAvoidingView`
+* `ImageBackground` header
+* Save and Back buttons
 
-## Get a fresh project
+---
 
-When you're ready, run:
+# 🌙 Theme Support
+
+Implemented automatic and manual theme handling using:
+
+* `useColorScheme()`
+
+Supports:
+
+* Light Mode
+* Dark Mode
+
+---
+
+# 📐 Responsive Design
+
+Responsive layouts implemented using:
+
+* `useWindowDimensions()`
+
+Optimized for:
+
+* phones
+* tablets
+* different screen sizes
+
+---
+
+# 🧩 Components Used
+
+* FlatList
+* TextInput
+* Pressable
+* Switch
+* KeyboardAvoidingView
+* ImageBackground
+* SafeAreaView
+* View
+* Text
+
+---
+
+# 🪝 Hooks Used
+
+* useState()
+* useColorScheme()
+* useWindowDimensions()
+
+---
+
+# 🎨 Styling
+
+Styling was implemented using:
+
+* `StyleSheet.create()`
+* `StyleSheet.compose()`
+
+Additional UI improvements:
+
+* rounded cards
+* smooth shadows
+* floating action button
+* modern typography
+* clean spacing
+
+---
+
+# 🚀 Tech Stack
+
+* React Native
+* Expo
+* TypeScript
+
+---
+
+# 📂 Project Structure
 
 ```bash
-npm run reset-project
+app/
+│
+├── index.tsx
+├── editor.tsx
+│
+assets/
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+# ▶️ Run Project
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npm install
+npx expo start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+# 📹 Demo Video
 
-Join our community of developers creating universal apps.
+Demo video link:
+([Add your video link here](https://drive.google.com/file/d/1W8_qNTiOISJg9eHipmmDYw9FjLXPQWk8/view?usp=sharing))
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# 📸 Screenshots
+
+(<img width="717" height="1600" alt="image" src="https://github.com/user-attachments/assets/b92428c9-b8d2-4a41-ad18-7e4f983ce12f" />
+
+<img width="717" height="1600" alt="image" src="https://github.com/user-attachments/assets/93bab07d-bea5-4937-b944-8598ff5ba902" />
+<img width="717" height="1600" alt="image" src="https://github.com/user-attachments/assets/7267a9c3-48e4-45f9-a293-2d9a79c294eb" />)
+
+
+
+---
+
+# 📚 Learning Outcome
+
+This project helped me practice:
+
+* React Native core components
+* responsive UI design
+* dark/light theme handling
+* input handling
+* clean styling practices
+* mobile UI structuring
+
+---
